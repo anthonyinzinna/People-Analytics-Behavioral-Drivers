@@ -1,4 +1,4 @@
-# Employee_Attrition_Analysis
+# Employee Attrition Analysis
 A project using a full data science pipeline to analyze and predict employee attrition.
 
 Employee Attrition Prediction: A Data-Driven Analysis
