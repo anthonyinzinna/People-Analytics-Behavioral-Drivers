@@ -1,59 +1,33 @@
-# Employee Attrition Analysis
-A project using a full data science pipeline to analyze and predict employee attrition.
+# People-Analytics-Behavioral-Drivers
+Behavioral analytics project combining Psychology and Machine Learning. Uses XGBoost & SHAP to decode retention drivers and predict turnover.
 
-Employee Attrition Prediction: A Data-Driven Analysis
-Problem Statement
-Employee attrition is a significant challenge for modern companies, leading to increased recruitment costs, decreased productivity, and low morale. By leveraging a data-driven approach, we can analyze key factors contributing to turnover and build predictive models to improve employee retention.
+Objective:
+To enhance employee retention and workplace experience by identifying behavioral, cultural, and organizational drivers of attrition using explainable machine learning.
 
-Key Findings from Exploratory Data Analysis (EDA)
-A correlation heatmap revealed relationships between employee attributes and attrition.
+Overview:
+This project reframes the IBM HR Attrition dataset into an employee experience optimization analysis, combining advanced modeling with explainable AI. It leverages XGBoost with class-weight adjustments to address class imbalance, achieving high recall in identifying at-risk employees. Through SHAP explainability, the model reveals which behavioral and workplace factors most influence attrition risk, offering actionable insights for HR strategy, EX design, and leadership development.
 
-Data preprocessing included removing unnecessary columns, encoding categorical variables, and feature scaling.
+Methodology:
+•	Data Preparation: Cleaned, encoded, and standardized the dataset after removing redundant columns and duplicates.
+•	Modeling: Trained an XGBoost classifier with scale_pos_weight balancing to prioritize recall (early detection of attrition). Logistic Regression was included as a benchmark model.
+•	Threshold Optimization: Used precision-recall curve analysis to tune decision thresholds for improved recall on minority (attrition) cases.
+•	Explainability: Applied SHAP (SHapley Additive exPlanations) for both global (feature importance) and local (individual employee) interpretability via summary and waterfall plots.
 
-The dataset showed imbalanced classes, with fewer employees labeled as attrition-positive compared to those who stayed.
+Findings:
+•	Optimized model recall improved from 34% → 61%, significantly increasing the model’s ability to identify at-risk employees.
+•	Top attrition drivers: Work-life balance, job satisfaction, years since last promotion, and relationship with management.
+•	Local SHAP interpretation (waterfall plot) revealed how unique combinations of stressors and satisfaction metrics predicted individual turnover risk.
+•	Logistic Regression achieved slightly higher overall accuracy (86%) but lagged in recall, confirming the value of threshold-tuned XGBoost for proactive retention.
 
-Machine Learning Models and Performance
-1) Clustering Analysis (K-Means)
+Recommendations:
+•	Deploy predictive monitoring to flag high-performing but disengaged employees early.
+•	Introduce career development pathways and recognition systems for employees at stagnation risk.
+•	Use SHAP-based dashboards for real-time EX analytics, enabling HR and management to intervene dynamically.
 
-Objective: Identify natural groupings within the employee dataset.
+Impact:
+This project demonstrates how behavioral data science can transform HR decision-making — merging psychological insight and machine learning to drive employee well-being, engagement, and retention. The approach directly supports roles in People Analytics, UX Research Analytics, and Behavioral Data Science.
 
-Method: K-Means clustering was used to group employees into distinct clusters.
+Tools Used:
+Python (pandas, XGBoost, SHAP, scikit-learn, matplotlib, seaborn), Precision-Recall Tuning, Logistic Regression Benchmark, IBM HR Attrition Dataset.
 
-Evaluation: The Silhouette Score of 0.1202 indicated weakly defined clusters, suggesting limited separation between employees who left and those who stayed.
 
-2) Logistic Regression Model
-
-Objective: Predict whether an employee will leave or stay.
-
-Performance Metrics:
-
-Accuracy: 86.39%
-
-Precision: 72.91% (for predicting attrition cases)
-
-Recall: 34.31% (the model struggled to catch all attrition cases)
-
-Specificity: 97.32% (the model was very good at identifying non-attrition employees)
-
-R² Score: 0.051 (the low predictive power indicates the model struggles to explain the variance)
-
-Confusion Matrix: The model correctly predicted most employees who stayed but had difficulty identifying those who left.
-
-Final Recommendations
-Improve Model Performance:
-
-Try balancing the dataset (e.g., oversampling attrition cases) to improve recall.
-
-Experiment with other models like Random Forest or Gradient Boosting for better predictions.
-
-Actionable Insights for HR:
-
-Investigate key employee characteristics that drive attrition (e.g., job satisfaction, compensation, workload) based on the model's findings.
-
-Implement employee engagement strategies based on high-risk groups identified by the model.
-
-Future Deployment Considerations:
-
-Deploy the model as a dashboard for HR teams to monitor attrition risk in real-time.
-
-Continuously update the model with new employee data for better predictions.
